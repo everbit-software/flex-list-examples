@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>List Examples</title>
+
+        <link rel="stylesheet" href="/scss/styles.scss">
+        <script type="module" src="/ts/main.ts" defer></script>
+    </head>
+
+    <body class="d-flex justify-content-center align-items-center">
+        <div class="container mx-auto text-center">
+            <h1>Dynamic Lists</h1>
+            <h3>Made with ease</h3>
+
+            <div class="row my-3 align-items-center">
+                <div class="col">
+                    
+                </div>
+
+                <div class="col-auto">
+                    <div class="btn-group">
+                        <a class="btn btn-outline-primary" href="/?view=table">Table</a>
+                        <a class="btn btn-outline-primary" href="/?view=list-group">List Group</a>
+                        <a class="btn btn-outline-primary" href="/?view=card">Card</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" id="listContainer">
+                <div class="card-header p-0">
+                    <input type="text" placeholder="Search..." class="form-control py-3 m-0 border-0" id="searchElement">
+                </div>
+
+                <div class="card-body" data-list="items">
+
+                </div>
+
+                <div class="card-footer d-flex justify-content-between">
+                    <div class="col-auto">
+                        <button class="btn btn-outline-secondary" data-list="page-prev">Prev</button>
+                    </div>
+
+                    <div class="col d-flex justify-content-center">
+                        <div class="btn-group" data-list="pages"></div>
+                    </div>
+
+                    <div class="col-auto">
+                        <button class="btn btn-outline-secondary" data-list="page-next">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
