@@ -1,1 +1,25 @@
 @import "~bootstrap/scss/bootstrap";
+
+.code-block {
+    margin: 0 0 1rem;
+    border: solid var(--bs-border-color);
+    border-width: 1px;
+    border-radius: var(--bs-border-radius);
+    padding: 1.5rem 1rem;
+
+    &.cb-inline {
+        padding: 0.1rem 0.4rem;
+        margin: 0 0.25rem;
+    }
+}
+
+.landing-section {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-inline: auto;
+    padding-inline: 2rem;
+    text-align: center;
+}

@@ -1,3 +1,6 @@
 import '../scss/main.scss';
 import * as bootstrap from 'bootstrap';
-import './list';
+
+// Examples
+import './examples/basic';
+import './examples/hotswap';

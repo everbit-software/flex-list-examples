@@ -1,5 +1,3 @@
-import DynamicList from "../../dynamic-list/dynamic-list"
-
 export interface Product {
     id: number
     title: string

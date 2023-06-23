@@ -1,36 +1,111 @@
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>List Examples</title>
 
-        <link rel="stylesheet" href="/scss/styles.scss">
         <script type="module" src="/ts/main.ts" defer></script>
+        <link href="https://jsdelivr.com/prismjs@v1.29/themes/prism.css" rel="stylesheet" />
     </head>
 
-    <body class="d-flex justify-content-center align-items-center">
-        <div class="container mx-auto text-center">
-            <h1>Dynamic Lists</h1>
-            <h3>Made with ease</h3>
+    <body>
+        <div class="landing-section mx-auto">
+            <h1>Pulling data from a remote source?</h1>
+            <h3>Create lists with ease with
+                <code class="code-block cb-inline">dynamic-list</code>
+            </h3>
+        </div>
+
+        <div class="container position-sticky my-3" style="top: 1rem; z-index: 9999;">
+            <nav class="navbar d-flex justify-content-center px-3 bg-body-tertiary rounded shadow" id="navbar-examples">
+                <div class="nav nav-pills">
+                    <div class="nav-item">
+                        <a class="nav-link" href="#sectionBasic">Basic</a>
+                    </div>
+
+                    <div class="nav-item">
+                        <a class="nav-link" href="#sectionHotSwap">Hot Swapping Renderers</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container mx-auto my-4" data-bs-spy="scroll" data-bs-target="#navbar-examples"
+            data-bs-smooth-scroll="true" data-bs-offset="100%" tabindex="0">
+
+            <hr class="my-4" id="sectionBasic">
+
+            <h1 class="text-center mb-2">Basic</h1>
+
+            <div class=" row">
+                <div class="col">
+                    <pre class="code-block"><code class="lang-js">import DynamicList from "../../../dynamic-list/dynamic-list";
+import { ListItem } from "../../../dynamic-list/list-item";
+import { Product, getRows } from "../dummy-api";
+import { BasicListRenderer } from "../../../dynamic-list/renderers/basic-list-renderer";
+import { Search } from "../../../dynamic-list/search";
+
+const basicContainer = document.querySelector('#basicContainer') as HTMLDivElement;
+const search = document.querySelector('#basicSearch') as HTMLInputElement;
+
+let list = new DynamicList({
+    renderer: new BasicListRenderer({
+        containerElement: basicContainer,
+        renderItem: (item: ListItem) => {
+            let product = item.data as Product;
+
+            return product.title;
+        }
+    }),
+    search: new Search({
+        inputElement: search,
+        fields: ['title']
+    }),
+    fetchCallbacks: {
+        load: async (page, limit) => getRows(page, limit),
+        search: async (query, page, limit) => getRows(page, limit, query),
+    },
+    idField: 'id',
+    noItemsText: 'There are currently no items.'
+});</code></pre>
+                </div>
+
+                <div class="col">
+                    <p>Some list items:</p>
+
+                    <input type="text" class="form-control mb-2" placeholder="Search..." id="basicSearch">
+
+                    <div id="basicContainer">
+
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4" id="sectionHotSwap">
+
+            <h1 class="text-center mb-2">Hot-swap renderers</h1>
 
             <div class="row my-3 align-items-center">
                 <div class="col">
-                    
+
                 </div>
 
                 <div class="col-auto">
                     <div class="btn-group">
-                        <a class="btn btn-outline-primary" href="/?view=table">Table</a>
-                        <a class="btn btn-outline-primary" href="/?view=list-group">List Group</a>
-                        <a class="btn btn-outline-primary" href="/?view=card">Card</a>
+                        <button type="button" class="btn btn-outline-primary" data-change-view="table">Table</button>
+                        <button type="button" class="btn btn-outline-primary" data-change-view="list-group">List
+                            Group</button>
+                        <button type="button" class="btn btn-outline-primary" data-change-view="card">Card</button>
                     </div>
                 </div>
             </div>
 
             <div class="card" id="listContainer">
                 <div class="card-header p-0">
-                    <input type="text" placeholder="Search..." class="form-control py-3 m-0 border-0" id="searchElement">
+                    <input type="text" placeholder="Search..." class="form-control py-3 m-0 border-0"
+                        id="searchElement">
                 </div>
 
                 <div class="card-body" data-list="items">
@@ -52,5 +127,8 @@
                 </div>
             </div>
         </div>
+        <script src="https://jsdelivr.com/prismjs@v1.29/components/prism-core.min.js"></script>
+        <script src="https://jsdelivr.com/prismjs@v1.29/plugins/autoloader/prism-autoloader.min.js"></script>
     </body>
+
 </html>
