@@ -3,7 +3,8 @@ const path = require('path')
 export default {
   root: path.resolve(__dirname, 'src'),
   build: {
-    outDir: './public/assets'
+    outDir: './public/assets',
+    target: 'esnext'
   },
   resolve: {
     alias: {

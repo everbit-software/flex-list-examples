@@ -25,22 +25,19 @@ if (rendererType === 'card') {
     renderer = new CardRenderer({
         containerElement: containerElement,
         paginationElements: paginationElements,
+        loaderHtml: `<div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>`,
         columnClasses: ['col-md-6', 'my-3'],
         renderItemSpinner(item: ListItem): HTMLElement {
             return document.createElement('div');
         },
-        renderRow(item: ListItem): HTMLElement|string {
+        renderRow(item: ListItem): HTMLElement | string {
             let product = item.data as Product;
 
-            return `<div class="card card-body">
-                <div class="row align-items-center">
-                    <div class="col">
-                        ${product.title}
-                        <div class="text-muted">${product.price}</div>
-                    </div>
+            return `<div class="card card-body h-100 d-flex justify-content-center">
+                <h2 class="mb-3">${product.title}</h2>
+                <div class="text-muted">$ ${product.price}</div>
                     
-                    <div class="col d-none d-md-block">${product.description}</div>
-                </div>
+                <div class="d-none d-md-block">${product.description}</div>
             </div>`;
         }
     })
@@ -48,10 +45,11 @@ if (rendererType === 'card') {
     renderer = new ListGroupRenderer({
         containerElement: containerElement,
         paginationElements: paginationElements,
+        loaderHtml: `<div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>`,
         renderItemSpinner(item: ListItem): HTMLElement {
             return document.createElement('div');
         },
-        renderRow(item: ListItem): HTMLElement|string {
+        renderRow(item: ListItem): HTMLElement | string {
             let product = item.data as Product;
 
             return `<div class="list-group-item">
@@ -70,6 +68,7 @@ if (rendererType === 'card') {
     renderer = new TableRenderer({
         containerElement: containerElement,
         paginationElements: paginationElements,
+        loaderHtml: `<div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>`,
         columns: [
             {
                 label: 'Title',
