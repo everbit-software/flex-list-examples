@@ -1,0 +1,3 @@
+[submodule "dynamic-list"] 
+  path = dynamic-list 
+  url = https://github.com:harry3110/dynamic-list.git
