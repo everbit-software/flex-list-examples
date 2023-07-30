@@ -14,7 +14,7 @@
         <div class="landing-section mx-auto">
             <h1>Pulling data from a remote source?</h1>
             <h3>Create lists with ease with
-                <code class="code-block cb-inline">dynamic-list</code>
+                <code class="code-block cb-inline">flex-list</code>
             </h3>
         </div>
 
@@ -41,16 +41,16 @@
 
             <div class=" row">
                 <div class="col">
-                    <pre class="code-block"><code class="lang-js">import DynamicList from "../../../dynamic-list/dynamic-list";
-import { ListItem } from "../../../dynamic-list/list-item";
+                    <pre class="code-block"><code class="lang-js">import FlexList from "@everbit-software/flex-list";
+import { ListItem } from "@everbit-software/list-item";
 import { Product, getRows } from "../dummy-api";
-import { BasicListRenderer } from "../../../dynamic-list/renderers/basic-list-renderer";
-import { Search } from "../../../dynamic-list/search";
+import { BasicListRenderer } from "@everbit-software/renderers/basic-list-renderer";
+import { Search } from "@everbit-software/search";
 
 const basicContainer = document.querySelector('#basicContainer') as HTMLDivElement;
 const search = document.querySelector('#basicSearch') as HTMLInputElement;
 
-let list = new DynamicList({
+let list = new FlexList({
     renderer: new BasicListRenderer({
         containerElement: basicContainer,
         renderItem: (item: ListItem) => {
@@ -63,7 +63,7 @@ let list = new DynamicList({
         inputElement: search,
         fields: ['title']
     }),
-    fetchCallbacks: {
+    itemCallbacks: {
         load: async (page, limit) => getRows(page, limit),
         search: async (query, page, limit) => getRows(page, limit, query),
     },

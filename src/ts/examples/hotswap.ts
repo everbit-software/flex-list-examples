@@ -1,18 +1,18 @@
-import DynamicList from "../../../dynamic-list/dynamic-list";
-import { TableRenderer } from "../../../dynamic-list/renderers/table-renderer";
-import { ListItem } from "../../../dynamic-list/list-item";
-import { ListGroupRenderer } from "../../../dynamic-list/renderers/Bootstrap/list-group-renderer";
-import { CardRenderer } from "../../../dynamic-list/renderers/Bootstrap/card-renderer";
-import { Search } from "../../../dynamic-list/search";
+import FlexList from "@everbit-software/flex-list/src/flex-list";
+import { TableRenderer } from "@everbit-software/flex-list/src/renderers/table-renderer";
+import { ListItem } from "@everbit-software/flex-list/src/list-item";
+import { ListGroupRenderer } from "@everbit-software/flex-list/src/renderers/Bootstrap/list-group-renderer";
+import { CardRenderer } from "@everbit-software/flex-list/src/renderers/Bootstrap/card-renderer";
+import { Search } from "@everbit-software/flex-list/src/search";
 import { Product, getRows } from "../dummy-api";
-import { AbstractRenderer } from "../../../dynamic-list/renderers/abstract-renderer";
-// import { PageLoader } from "../../dynamic-list/loaders/page-loader";
+import { AbstractRenderer } from "@everbit-software/flex-list/src/renderers/abstract-renderer";
+// import { PageLoader } from "../../flex-list/loaders/page-loader";
 
 const listContainer = document.querySelector('#listContainer') as HTMLDivElement;
 const containerElement = listContainer.querySelector('[data-list=items]') as HTMLDivElement;
 const paginationElements = {
-    prevPageButton: listContainer.querySelector('[data-list=page-prev]') as HTMLButtonElement,
-    nextPageButton: listContainer.querySelector('[data-list=page-next]') as HTMLButtonElement,
+    prevButton: listContainer.querySelector('[data-list=page-prev]') as HTMLButtonElement,
+    nextButton: listContainer.querySelector('[data-list=page-next]') as HTMLButtonElement,
     pagesContainer: listContainer.querySelector('[data-list=pages]') as HTMLElement,
 };
 
@@ -101,7 +101,7 @@ const getRenderer = (view: string) => {
     return renderer;
 }
 
-let list = new DynamicList({
+let list = new FlexList({
     renderer: getRenderer(url.searchParams.get('view')),
     /* loader: new PageLoader({
         loadPage: async (page, limit) => getRows(page, limit),
@@ -112,7 +112,7 @@ let list = new DynamicList({
         inputElement: document.querySelector('#searchElement') as HTMLInputElement,
         fields: ['name']
     }),
-    fetchCallbacks: {
+    itemCallbacks: {
         load: async (page, limit) => getRows(page, limit),
         search: async (query, page, limit) => getRows(page, limit, query),
         getLastPageNumber: async () => 10

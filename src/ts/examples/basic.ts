@@ -1,13 +1,13 @@
-import DynamicList from "../../../dynamic-list/dynamic-list";
-import { ListItem } from "../../../dynamic-list/list-item";
+import FlexList from "@everbit-software/flex-list/src/flex-list";
+import { ListItem } from "@everbit-software/flex-list/src/list-item";
 import { Product, getRows } from "../dummy-api";
-import { BasicListRenderer } from "../../../dynamic-list/renderers/basic-list-renderer";
-import { Search } from "../../../dynamic-list/search";
+import { BasicListRenderer } from "@everbit-software/flex-list/src/renderers/basic-list-renderer";
+import { Search } from "@everbit-software/flex-list/src/search";
 
 const basicContainer = document.querySelector('#basicContainer') as HTMLDivElement;
 const search = document.querySelector('#basicSearch') as HTMLInputElement;
 
-let list = new DynamicList({
+let list = new FlexList({
     renderer: new BasicListRenderer({
         containerElement: basicContainer,
         renderItem: (item: ListItem) => {
@@ -20,7 +20,7 @@ let list = new DynamicList({
         inputElement: search,
         fields: ['title']
     }),
-    fetchCallbacks: {
+    itemCallbacks: {
         load: async (page, limit) => getRows(page, limit),
         search: async (query, page, limit) => getRows(page, limit, query),
     },
