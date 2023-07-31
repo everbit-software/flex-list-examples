@@ -1,8 +1,8 @@
 import FlexList from "@everbit-software/flex-list/src/flex-list";
 import { TableRenderer } from "@everbit-software/flex-list/src/renderers/table-renderer";
 import { ListItem } from "@everbit-software/flex-list/src/list-item";
-import { ListGroupRenderer } from "@everbit-software/flex-list/src/renderers/Bootstrap/list-group-renderer";
-import { CardRenderer } from "@everbit-software/flex-list/src/renderers/Bootstrap/card-renderer";
+import { ListGroupRenderer } from "@everbit-software/flex-list/src/renderers/bootstrap/list-group-renderer";
+import { CardRenderer } from "@everbit-software/flex-list/src/renderers/bootstrap/card-renderer";
 import { Search } from "@everbit-software/flex-list/src/search";
 import { Product, getRows } from "../dummy-api";
 import { AbstractRenderer } from "@everbit-software/flex-list/src/renderers/abstract-renderer";
