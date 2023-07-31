@@ -1,9 +1,9 @@
-const path = require('path')
+const path = require('path');
 
 export default {
     root: path.resolve(__dirname, 'src'),
     build: {
-        outDir: './public/assets',
+        outDir: path.resolve(__dirname, 'public_html/assets'),
         target: 'esnext'
     },
     resolve: {
@@ -15,4 +15,4 @@ export default {
         port: 4000,
         hot: true
     }
-}
+};
