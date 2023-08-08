@@ -3,7 +3,7 @@ const path = require('path');
 export default {
     root: path.resolve(__dirname, 'src'),
     build: {
-        outDir: path.resolve(__dirname, 'public_html/assets'),
+        outDir: path.resolve(__dirname, 'public_html'),
         target: 'esnext'
     },
     resolve: {
