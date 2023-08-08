@@ -39,46 +39,23 @@
 
             <h1 class="text-center mb-2">Basic</h1>
 
-            <div class=" row">
-                <div class="col">
-                    <pre class="code-block"><code class="lang-js">import FlexList from "@everbit-software/flex-list";
-import { ListItem } from "@everbit-software/list-item";
-import { Product, getRows } from "../dummy-api";
-import { BasicListRenderer } from "@everbit-software/renderers/basic-list-renderer";
-import { Search } from "@everbit-software/search";
+            <div class="row align-items-center">
+                <div class="col-3 text-center">
+                    <p>Create basic lists with search functionality</p>
 
-const basicContainer = document.querySelector('#basicContainer') as HTMLDivElement;
-const search = document.querySelector('#basicSearch') as HTMLInputElement;
-
-let list = new FlexList({
-    renderer: new BasicListRenderer({
-        containerElement: basicContainer,
-        renderItem: (item: ListItem) => {
-            let product = item.data as Product;
-
-            return product.title;
-        }
-    }),
-    search: new Search({
-        inputElement: search,
-        fields: ['title']
-    }),
-    itemCallbacks: {
-        load: async (page, limit) => getRows(page, limit),
-        search: async (query, page, limit) => getRows(page, limit, query),
-    },
-    idField: 'id',
-    noItemsText: 'There are currently no items.'
-});</code></pre>
+                    <a href="https://github.com/everbit-software/flex-list-examples/blob/main/src/ts/examples/basic.ts"
+                        class="btn btn-outline-primary">View code on GitHub</a>
                 </div>
 
                 <div class="col">
-                    <p>Some list items:</p>
+                    <div class="card">
+                        <div class="card-body">
+                            <input type="text" class="form-control mb-2" placeholder="Search..." id="basicSearch">
 
-                    <input type="text" class="form-control mb-2" placeholder="Search..." id="basicSearch">
+                            <div id="basicContainer">
 
-                    <div id="basicContainer">
-
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -87,9 +64,20 @@ let list = new FlexList({
 
             <h1 class="text-center mb-2">Hot-swap renderers</h1>
 
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <p class="text-center">
+                        You can make the renderering as simple or as complex as you need. In the following example, I've
+                        implemented 3 different renderers for the same list instance. This is possible due to the
+                        renders being interchangable
+                    </p>
+                </div>
+            </div>
+
             <div class="row my-3 align-items-center">
                 <div class="col">
-
+                    <a href="https://github.com/everbit-software/flex-list-examples/blob/main/src/ts/examples/hotswap.ts"
+                        class="btn btn-outline-primary">View code on GitHub</a>
                 </div>
 
                 <div class="col-auto">
