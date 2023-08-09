@@ -84,7 +84,8 @@ const getRenderer = (view: string) => {
                 },
                 {
                     label: 'Price',
-                    key: 'price'
+                    key: 'price',
+                    displayCallback: (value: any) => `£ ${value}`
                 }
             ]
         });
